@@ -1,45 +1,27 @@
 <template>
-  <footer class="bg-light text-center text-lg-start">
+  <footer class="bg-light text-center text-lg-start mt-auto">
     <div class="container p-4">
       <div class="row">
         <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
           <h5 class="text-uppercase">My Online Store</h5>
-          <p>
-            Here you can use rows and columns to organize your footer content.
-          </p>
+          <p>Here you can use rows and columns to organize your footer content.</p>
         </div>
         <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
           <h5 class="text-uppercase">Links</h5>
           <ul class="list-unstyled mb-0">
-            <li>
-              <a href="#!" class="text-dark">Link 1</a>
-            </li>
-            <li>
-              <a href="#!" class="text-dark">Link 2</a>
-            </li>
-            <li>
-              <a href="#!" class="text-dark">Link 3</a>
-            </li>
-            <li>
-              <a href="#!" class="text-dark">Link 4</a>
-            </li>
+            <li><a href="#!" class="text-dark">Link 1</a></li>
+            <li><a href="#!" class="text-dark">Link 2</a></li>
+            <li><a href="#!" class="text-dark">Link 3</a></li>
+            <li><a href="#!" class="text-dark">Link 4</a></li>
           </ul>
         </div>
         <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
           <h5 class="text-uppercase mb-0">Links</h5>
           <ul class="list-unstyled">
-            <li>
-              <a href="#!" class="text-dark">Link 1</a>
-            </li>
-            <li>
-              <a href="#!" class="text-dark">Link 2</a>
-            </li>
-            <li>
-              <a href="#!" class="text-dark">Link 3</a>
-            </li>
-            <li>
-              <a href="#!" class="text-dark">Link 4</a>
-            </li>
+            <li><a href="#!" class="text-dark">Link 1</a></li>
+            <li><a href="#!" class="text-dark">Link 2</a></li>
+            <li><a href="#!" class="text-dark">Link 3</a></li>
+            <li><a href="#!" class="text-dark">Link 4</a></li>
           </ul>
         </div>
       </div>
@@ -58,8 +40,17 @@ export default {
 </script>
 
 <style scoped>
-/* Adaugă stilurile tale aici */
 footer {
   margin-top: 20px;
+}
+h5 {
+  font-size: 1.25rem;
+}
+a {
+  color: #000;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
 }
 </style>
