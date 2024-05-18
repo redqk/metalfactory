@@ -2,8 +2,8 @@
     <div>
       <section class="hero">
         <div class="container">
-          <h1>Welcome to My Online Store</h1>
-          <p>Your one-stop shop for all your needs</p>
+          <h1>Metal Factory</h1>
+          <p>Inovatie si calitate romaneasca!</p>
         </div>
       </section>
       <section class="products mt-5">
