@@ -1,7 +1,9 @@
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: 'https://api.example.com' // Înlocuiește cu URL-ul real al backend-ului tău
+  baseURL: 'http://localhost:3000/api', // Asigură-te că această adresă este corectă
+  timeout: 5000, // Mărește valoarea timeout-ului la 5000 ms (5 secunde)
+  headers: { 'Content-Type': 'application/json' }
 })
 
 export default api

@@ -10,7 +10,7 @@
 
 <script>
 import ProductItem from './ProductItem.vue'
-import api from '../components/services/api'
+import api from '@/components/services/api' // Folosește alias-ul corect
 
 export default {
   name: 'ProductList',

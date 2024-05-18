@@ -1,10 +1,7 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import api from '../components/services/api'
+import { createStore } from 'vuex'
+import api from '@/components/services/api'
 
-Vue.use(Vuex)
-
-export default new Vuex.Store({
+export default createStore({
   state: {
     cart: [],
     user: null,
