@@ -1,10 +1,7 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import Cart from '../views/Cart.vue'
-import ProductDetails from '../components/ProductDetails.vue' // Adaugăm importul pentru pagina de Detalii Produs
-
-Vue.use(VueRouter)
+import { createRouter, createWebHistory } from 'vue-router'
+import Home from '@/views/Home.vue'
+import Cart from '@/views/Cart.vue'
+import Login from '@/components/Login.vue'
 
 const routes = [
   {
@@ -18,15 +15,14 @@ const routes = [
     component: Cart
   },
   {
-    path: '/product/:id', // Definim ruta pentru Detalii Produs cu un parametru pentru id-ul produsului
-    name: 'ProductDetails',
-    component: ProductDetails
+    path: '/login',
+    name: 'Login',
+    component: Login
   }
 ]
 
-const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
   routes
 })
 
