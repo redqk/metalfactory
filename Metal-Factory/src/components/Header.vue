@@ -1,6 +1,6 @@
 <template>
   <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Metal Factory</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,6 +24,9 @@
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
               <router-link class="nav-link" to="/login">Login</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link to="/register" class="nav-link">Register</router-link>
             </li>
             <li class="nav-item">
               <router-link class="nav-link" to="/cart">Cart</router-link>

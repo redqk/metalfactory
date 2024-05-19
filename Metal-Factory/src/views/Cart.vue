@@ -1,6 +1,7 @@
 <template>
-    <div class="cart">
-      <Header />
+  <div class="cart-container">
+    <Header />
+    <div class="main-content">
       <h1>Shopping Cart</h1>
       <div v-if="cart.length === 0">
         <p>Your cart is empty.</p>
@@ -13,47 +14,52 @@
         <p>Total: ${{ totalPrice }}</p>
         <button @click="checkout">Checkout</button>
       </div>
-      <Footer />
     </div>
-  </template>
-  
-  <script>
-  import Header from '../components/Header.vue'
-  import Footer from '../components/Footer.vue'
-  import { mapState, mapActions, mapGetters } from 'vuex'
-  
-  export default {
-    name: 'Cart',
-    components: {
-      Header,
-      Footer
-    },
-    computed: {
-      ...mapState(['cart']),
-      ...mapGetters(['totalPrice'])
-    },
-    methods: {
-      ...mapActions(['removeFromCart', 'checkout'])
-    }
+  </div>
+</template>
+
+<script>
+import Header from '../components/Header.vue'
+import { mapState, mapActions, mapGetters } from 'vuex'
+
+export default {
+  name: 'Cart',
+  components: {
+    Header
+  },
+  computed: {
+    ...mapState(['cart']),
+    ...mapGetters(['totalPrice'])
+  },
+  methods: {
+    ...mapActions(['removeFromCart', 'checkout'])
   }
-  </script>
-  
-  <style scoped>
-  .cart {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .cart-item {
-    display: flex;
-    justify-content: space-between;
-    width: 300px;
-    margin-bottom: 10px;
-  }
-  
-  button {
-    cursor: pointer;
-  }
-  </style>
-  
+}
+</script>
+
+<style scoped>
+.cart-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+  margin-bottom: 10px;
+}
+
+button {
+  cursor: pointer;
+}
+</style>
