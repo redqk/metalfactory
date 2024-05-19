@@ -2,13 +2,14 @@
     <div>
       <section class="hero">
         <div class="container">
+          <br>
           <h1>Metal Factory</h1>
           <p>Inovatie si calitate romaneasca!</p>
         </div>
       </section>
       <section class="products mt-5">
         <div class="container">
-          <h2>Featured Products</h2>
+          <h2>Produse noi</h2>
           <ProductList />
         </div>
       </section>
