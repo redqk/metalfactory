@@ -1,8 +1,8 @@
 <template>
   <div id="app" class="d-flex flex-column min-vh-100">
-    <Header />
+    <Header @search="setSearchQuery" />
     <main class="flex-grow-1">
-      <router-view />
+      <router-view :searchQuery="searchQuery" />
     </main>
     <Footer />
   </div>
@@ -17,6 +17,16 @@ export default {
   components: {
     Header,
     Footer
+  },
+  data() {
+    return {
+      searchQuery: ''
+    };
+  },
+  methods: {
+    setSearchQuery(query) {
+      this.searchQuery = query;
+    }
   }
 }
 </script>

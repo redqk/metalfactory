@@ -1,6 +1,5 @@
 <template>
   <div class="cart-container">
-    <Header />
     <div class="main-content">
       <h1>Shopping Cart</h1>
       <div v-if="cart.length === 0">
@@ -19,14 +18,10 @@
 </template>
 
 <script>
-import Header from '../components/Header.vue'
 import { mapState, mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'Cart',
-  components: {
-    Header
-  },
   computed: {
     ...mapState(['cart']),
     ...mapGetters(['totalPrice'])

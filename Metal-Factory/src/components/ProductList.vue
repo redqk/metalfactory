@@ -1,38 +1,48 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4" v-for="product in products" :key="product.id">
-        <ProductItem :product="product" />
-      </div>
+  <div>
+    <div class="product-list">
+      <ProductItem
+        v-for="product in filteredProducts"
+        :key="product.id"
+        :product="product"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import ProductItem from './ProductItem.vue'
-import api from '@/components/services/api' // Folosește alias-ul corect
+import ProductItem from './ProductItem.vue';
 
 export default {
-  name: 'ProductList',
   components: {
-    ProductItem
+    ProductItem,
+  },
+  props: {
+    searchQuery: String
   },
   data() {
     return {
-      products: []
-    }
+      products: [], // Aici vei popula produsele dintr-o sursă externă sau store
+    };
   },
-  async created() {
-    try {
-      const response = await api.get('/products')
-      this.products = response.data
-    } catch (error) {
-      console.error('Failed to fetch products:', error)
-    }
-  }
-}
+  computed: {
+    filteredProducts() {
+      return this.products.filter(product => {
+        return product.name.toLowerCase().includes(this.searchQuery.toLowerCase());
+      });
+    },
+  },
+  created() {
+    // Populează lista de produse de exemplu printr-un API call sau din store
+    // this.products = this.$store.state.products;
+  },
+};
 </script>
 
 <style scoped>
-/* Adaugă stilurile tale aici */
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
 </style>
