@@ -1,3 +1,5 @@
+<!-- eslint-disable vue/multi-word-component-names -->
+// eslint-disable-next-line vue/multi-word-component-names
 <template>
   <header class="header navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
@@ -82,7 +84,7 @@ export default {
   },
   methods: {
     search() {
-      this.$emit('search', this.searchQuery);
+      this.$router.push({ name: 'products', query: { search: this.searchQuery } });
     }
   }
 };

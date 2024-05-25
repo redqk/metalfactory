@@ -1,43 +1,40 @@
 <template>
-  <div class="container my-5">
+  <div class="container my-5" v-if="product">
     <div class="row">
       <div class="col-md-6">
-        <img :src="product.image" alt="Product Image" class="img-fluid">
+        <img :src="product.image" class="img-fluid" :alt="product.name">
       </div>
       <div class="col-md-6">
-        <h1>{{ product.name }}</h1>
+        <h2>{{ product.name }}</h2>
         <p>
-          <del>{{ product.oldPrice }} lei</del>
+          <span class="text-muted text-decoration-line-through">{{ product.oldPrice }} lei</span>
           <br>
-          <strong>{{ product.newPrice }} lei</strong>
+          <span class="fw-bold">{{ product.newPrice }} lei</span>
         </p>
-        <p>Alege una dintre variantele de mai jos, în funcție de accesoriile dorite:</p>
-        <div class="mb-3">
-          <label for="accessories" class="form-label">Accesorii</label>
-          <select id="accessories" class="form-select" v-model="selectedAccessory">
-            <option v-for="accessory in product.accessories" :key="accessory.id" :value="accessory.id">
-              {{ accessory.name }}
-            </option>
-          </select>
+        <p>This is a detailed description of the product with ID {{ product.id }}.</p>
+        <h5>Accesorii</h5>
+        <ul>
+          <li v-for="accessory in product.accessories" :key="accessory">{{ accessory }}</li>
+        </ul>
+        <div>
+          <label for="quantity">Cantitate:</label>
+          <input type="number" id="quantity" v-model.number="quantity" min="1" class="form-control w-25">
         </div>
-        <div class="mb-3">
-          <label for="quantity" class="form-label">Cantitate</label>
-          <input type="number" id="quantity" class="form-control" v-model.number="quantity" min="1">
-        </div>
-        <button @click="addToCart" class="btn btn-primary">Adaugă în coș</button>
-        <p class="mt-3"><strong>SKU:</strong> {{ product.sku }}</p>
-        <p><strong>Categorie:</strong> {{ product.category }}</p>
+        <button class="btn btn-primary mt-3" @click="addToCart">Adaugă în coș</button>
+        <p class="mt-3">
+          <strong>SKU:</strong> {{ product.sku }}
+          <br>
+          <strong>Categorie:</strong> {{ product.category }}
+        </p>
       </div>
     </div>
     <div class="mt-5">
-      <h2>DESCRIERE</h2>
+      <h3>DESCRIERE</h3>
       <p>{{ product.description }}</p>
-      <ul>
-        <li v-for="(dimension, index) in product.dimensions" :key="index">{{ dimension }}</li>
-      </ul>
-      <p>{{ product.deliveryTime }}</p>
-      <p>{{ product.vatIncluded }}</p>
     </div>
+  </div>
+  <div v-else>
+    <p>Loading product details...</p>
   </div>
 </template>
 
@@ -45,41 +42,59 @@
 export default {
   data() {
     return {
-      product: {
-        id: 1,
-        name: 'Grătar Cu Plită Pătrată VOON 100M BLACK',
-        oldPrice: '8,250.00',
-        newPrice: '7,590.00',
-        image: 'path/to/image.jpg',
-        accessories: [
-          { id: 1, name: 'Accessory 1' },
-          { id: 2, name: 'Accessory 2' },
-          { id: 3, name: 'Accessory 3' }
-        ],
-        sku: 'SQ-100M-B',
-        category: 'Grătare',
-        description: 'Acest grătar cu un design aparte este perfect atât pentru a pregăti o masă savuroasă și diversificată...',
-        dimensions: [
-          'Înălțime bază: 72 cm',
-          'Dimensiune bază: 50x50 cm',
-          'Înălțime totală: 100 cm',
-          'Dimensiuni plită: 98x98 cm',
-          'Grosime plită: 10 mm',
-          'Diametru decupaj plită: 48 cm',
-          'Greutate aproximativă: 130-140 kg',
-          'Culoare: Negru'
-        ],
-        deliveryTime: 'Livrare: 7 zile lucrătoare',
-        vatIncluded: 'Prețurile conțin TVA'
-      },
-      selectedAccessory: null,
+      product: null,
       quantity: 1
+    };
+  },
+  computed: {
+    productId() {
+      return this.$route.params.id;
     }
   },
   methods: {
+    fetchProduct() {
+      const products = [
+        {
+          id: '1',
+          name: 'Grătar Cu Plită Pătrată VOON 100M CORTEN',
+          oldPrice: '8,250.00',
+          newPrice: '7,590.00',
+          image: 'path/to/image1.jpg',
+          accessories: ['Accessory 1', 'Accessory 2', 'Accessory 3'],
+          sku: 'SQ-100M-C',
+          category: 'Gratare',
+          description: 'This is the long description of the product, including all details and specifications.'
+        },
+        {
+          id: '2',
+          name: 'Grătar Cu Plită Pătrată VOON 100M BLACK',
+          oldPrice: '8,250.00',
+          newPrice: '7,590.00',
+          image: 'path/to/image2.jpg',
+          accessories: ['Accessory A', 'Accessory B', 'Accessory C'],
+          sku: 'SQ-100M-B',
+          category: 'Gratare',
+          description: 'This is the long description of the product, including all details and specifications.'
+        }
+      ];
+      this.product = products.find(p => p.id === this.productId);
+    },
     addToCart() {
-      // Implementarea funcției de adăugare în coș
+      // Logic to add the product to the cart
+      alert(`Added ${this.quantity} of ${this.product.name} to cart`);
     }
+  },
+  watch: {
+    productId() {
+      this.fetchProduct();
+    }
+  },
+  mounted() {
+    this.fetchProduct();
   }
-}
+};
 </script>
+
+<style scoped>
+/* Add your styles here */
+</style>

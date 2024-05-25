@@ -1,9 +1,7 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import Home from '@/views/Home.vue'
-import Cart from '@/views/Cart.vue'
-import Login from '@/components/Login.vue'
-import Register from '@/components/Register.vue'
-import ProductDetails from '@/components/ProductDetails.vue'
+import { createRouter, createWebHistory } from 'vue-router';
+import Home from '../views/Home.vue';
+import ProductList from '../components/ProductList.vue';
+import ProductDetails from '../components/ProductDetails.vue';
 
 const routes = [
   {
@@ -12,31 +10,20 @@ const routes = [
     component: Home
   },
   {
-    path: '/cart',
-    name: 'Cart',
-    component: Cart
+    path: '/products',
+    name: 'ProductList',
+    component: ProductList
   },
   {
-    path: '/login',
-    name: 'Login',
-    component: Login
-  },
-  {
-    path: '/register',
-    name: 'Register',
-    component: Register
-  },
-  {
-    path: '/product/:id',
+    path: '/products/:id',
     name: 'ProductDetails',
-    component: ProductDetails,
-    props: true
+    component: ProductDetails
   }
-]
+];
 
 const router = createRouter({
   history: createWebHistory(),
   routes
-})
+});
 
-export default router
+export default router;
