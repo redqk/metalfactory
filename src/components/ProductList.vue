@@ -33,6 +33,13 @@ export default {
           oldPrice: '8,250.00',
           newPrice: '7,590.00',
           image: 'path/to/image2.jpg'
+        },
+        {
+          id: '3',
+          name: 'Grătar Cu Plită Pătrată VOON 100M BLACK',
+          oldPrice: '8,250.00',
+          newPrice: '7,590.00',
+          image: 'path/to/image2.jpg'
         }
         // Add other products here
       ]

@@ -27,7 +27,9 @@
   export default {
     name: 'ShoppingCart',
     components: {
+      // eslint-disable-next-line vue/no-reserved-component-names
       Header,
+      // eslint-disable-next-line vue/no-reserved-component-names
       Footer
     },
     computed: {

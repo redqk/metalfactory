@@ -74,8 +74,19 @@ export default {
           accessories: ['Accessory A', 'Accessory B', 'Accessory C'],
           sku: 'SQ-100M-B',
           category: 'Gratare',
-          description: 'This is the long description of the product, including all details and specifications.'
-        }
+          description: 'descriere de verificare'
+        },
+        {
+          id: '3',
+          name: 'Grătar Cu Plită Pătrată VOON 100M BLACK',
+          oldPrice: '8,250.00',
+          newPrice: '7,590.00',
+          image: 'path/to/image2.jpg',
+          accessories: ['Accessory A', 'Accessory B', 'Accessory C'],
+          sku: 'SQ-100M-B',
+          category: 'Gratare',
+          description: 'descriere de verificare la produsul cu id 3'
+        },
       ];
       this.product = products.find(p => p.id === this.productId);
     },
